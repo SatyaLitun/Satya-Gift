@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Gift for Madhu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       box-sizing: border-box;
@@ -17,6 +18,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden; /* Stop scrolling when popup comes */
     }
 
     .container {
@@ -29,6 +31,10 @@
       max-width: 400px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       text-align: center;
+      position: absolute; /* Fix center */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .container h1 {
@@ -76,13 +82,14 @@
 
     /* Popup after successful login */
     #popup {
-      display: none; /* Fixed here: only one display:none */
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.5);
+      display: flex;
       justify-content: center;
       align-items: center;
       z-index: 1000;
@@ -98,6 +105,7 @@
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
       font-family: 'Poppins', sans-serif;
       color: #d63384;
+      position: relative;
     }
 
     #popup-content p {
@@ -125,6 +133,26 @@
       background-color: #ffc107;
       color: #000;
       margin-top: 15px;
+    }
+
+    /* Responsive for Mobile */
+    @media (max-width: 600px) {
+      .container, #popup-content {
+        max-width: 90%;
+        padding: 50px 25px;
+      }
+      .container h1 {
+        font-size: 32px;
+      }
+      .container p, #popup-content p {
+        font-size: 18px;
+      }
+      input, button {
+        font-size: 18px;
+      }
+      #popup-content h2 {
+        font-size: 28px;
+      }
     }
 
   </style>
