@@ -4,12 +4,29 @@
   <meta charset="UTF-8">
   <title>Gift for Madhu</title>
   <style>
+    /* Set the background image to cover the entire page */
     body {
-      background-color: #fef6f9;
+      background-image: url('Maa.jfif');
+      background-size: cover;
+      background-position: center;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
       padding-top: 40px;
       color: #444;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Styling for the content box */
+    .content-box {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 600px;
     }
 
     h1 {
@@ -52,49 +69,52 @@
 </head>
 <body>
 
-  <h1>Hi Madhu 💝</h1>
-  <p>Enter the secret credentials to unlock your surprise</p>
+  <div class="content-box">
+    <h1>Hi Madhu 💝</h1>
+    <p>Enter the secret credentials to unlock your surprise</p>
 
-  <!-- Image of Maa -->
-  <img src="Maa.jfif" alt="Blessings from Maa Mangala" class="image" />
+    <!-- Image of Maa -->
+    <img src="Maa.jfif" alt="Blessings from Maa Mangala" class="image" />
 
-  <div>
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="password" id="password" placeholder="Password"><br>
-    <button onclick="validate()">Submit</button>
-    <p class="error" id="error"></p>
+    <div>
+      <input type="text" id="username" placeholder="Username"><br>
+      <input type="password" id="password" placeholder="Password"><br>
+      <button onclick="validate()">Submit</button>
+      <p class="error" id="error"></p>
+    </div>
+
+    <div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index:999;">
+      <div style="background:#fff; margin:10% auto; padding:30px; width:80%; max-width:400px; border-radius:10px; text-align:center; color:#d63384; font-size:18px; font-weight:bold;">
+        <p>
+          Welcome Madhu Mam 🎁<br><br>
+          A little surprise is on the way just for you.<br><br>
+          Click “Continue” to unlock a small piece of joy and see what is coming your way.<br><br>
+          It’s sent with a lot of thought and care. Hope you will love it.<br><br>
+          Wishing you a very Happy Birthday in advance on <strong>5th May</strong>! 🎂
+        </p>
+        <button onclick="redirect()" style="margin-top:20px; padding:10px 20px; background-color:#d63384; color:white; border:none; border-radius:5px;">Continue</button>
+        <br><br>
+        <button onclick="window.open('OrderProof.jpg', '_blank')" style="margin-top:20px; padding:10px 20px; background-color:#b02a6f; color:white; border:none; border-radius:5px;">📦 View Order Snapshot</button>
+      </div>
+    </div>
   </div>
 
-  <div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index:999;">
-  <div style="background:#fff; margin:10% auto; padding:30px; width:80%; max-width:400px; border-radius:10px; text-align:center; color:#d63384; font-size:18px; font-weight:bold;">
-    <p>
-      Welcome Madhu Mam 🎁<br><br>
-      A little surprise is on the way just for you.<br><br>
-      Click “Continue” to unlock a small piece of joy and see what is coming your way.<br><br>
-      It’s sent with a lot of thought and care. Hope you will love it.<br><br>
-      Wishing you a very Happy Birthday in advance on <strong>5th May</strong>! 🎂
-    </p>
-    <button onclick="redirect()" style="margin-top:20px; padding:10px 20px; background-color:#d63384; color:white; border:none; border-radius:5px;">Continue</button>
-  </div>
-</div>
+  <script>
+    function validate() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
 
-<script>
-  function validate() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value.trim();
-
-    if (user === "Madhu" && pass === "Dixit") {
-      document.getElementById("popup").style.display = "block";
-    } else {
-      document.getElementById("error").innerText = "Oops! Incorrect credentials. Try again.";
+      if (user === "Madhu" && pass === "Dixit") {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("error").innerText = "Oops! Incorrect credentials. Try again.";
+      }
     }
-  }
 
-  function redirect() {
-    window.location.href = "https://www.myntra.com/27959656?skuId=89974800&sellerPartnerId=22540&orderDate=1745608830000&orderId=5460629360&productName=Indo%20Era%20Women%20Floral%20Embroidered%20Thread%20Work%20Kurta%20with%20Trousers%20&%20With%20Dupatta&itemId=10431337826&orderStatusName=Confirmed&size=3XL";
-  }
-</script>
-
+    function redirect() {
+      window.location.href = "https://www.myntra.com/27959656?skuId=89974800&sellerPartnerId=22540&orderDate=1745608830000&orderId=5460629360&productName=Indo%20Era%20Women%20Floral%20Embroidered%20Thread%20Work%20Kurta%20with%20Trousers%20&%20With%20Dupatta&itemId=10431337826&orderStatusName=Confirmed&size=3XL";
+    }
+  </script>
 
 </body>
 </html>
