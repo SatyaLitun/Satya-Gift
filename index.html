@@ -65,19 +65,36 @@
     <p class="error" id="error"></p>
   </div>
 
-  <script>
-    function validate() {
-      const user = document.getElementById("username").value.trim();
-      const pass = document.getElementById("password").value.trim();
+  <div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index:999;">
+  <div style="background:#fff; margin:10% auto; padding:30px; width:80%; max-width:400px; border-radius:10px; text-align:center; color:#d63384; font-size:18px; font-weight:bold;">
+    <p>
+      Welcome Madhu Mam 🎁<br><br>
+      A little surprise is on the way just for you.<br><br>
+      Click “OK” to unlock a small piece of joy and see what is coming your way.<br><br>
+      It’s sent with a lot of thought and care. Hope you will love it.<br><br>
+      Wishing you a very Happy Birthday in advance on <strong>5th May</strong>! 🎂
+    </p>
+    <button onclick="redirect()" style="margin-top:20px; padding:10px 20px; background-color:#d63384; color:white; border:none; border-radius:5px;">Continue</button>
+  </div>
+</div>
 
-      if (user === "Madhu" && pass === "Dixit") {
-        alert("Welcome Madhu Mam 🎁 Redirecting to your surprise...");
-        window.location.href = "https://www.myntra.com";
-      } else {
-        document.getElementById("error").innerText = "Oops! Incorrect credentials. Try again.";
-      }
+<script>
+  function validate() {
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+
+    if (user === "Madhu" && pass === "Dixit") {
+      document.getElementById("popup").style.display = "block";
+    } else {
+      document.getElementById("error").innerText = "Oops! Incorrect credentials. Try again.";
     }
-  </script>
+  }
+
+  function redirect() {
+    window.location.href = "https://www.myntra.com";
+  }
+</script>
+
 
 </body>
 </html>
