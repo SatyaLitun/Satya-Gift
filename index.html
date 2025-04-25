@@ -18,10 +18,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* Stop scrolling when popup comes */
+      overflow: hidden;
     }
 
-    .container {
+    .container, #popup-content {
       background-color: #fff;
       display: flex;
       flex-direction: column;
@@ -31,19 +31,19 @@
       max-width: 400px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       text-align: center;
-      position: absolute; /* Fix center */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      user-select: none;
+      position: relative;
     }
 
-    .container h1 {
+    .container h1,
+    #popup-content h2 {
       color: #d63384;
       margin-bottom: 10px;
       font-size: 28px;
     }
 
-    .container p {
+    .container p,
+    #popup-content p {
       margin-bottom: 20px;
       font-size: 16px;
       color: #555;
@@ -80,7 +80,7 @@
       font-size: 14px;
     }
 
-    /* Popup after successful login */
+    /* Popup */
     #popup {
       display: none;
       position: fixed;
@@ -93,25 +93,20 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
+      user-select: none;
     }
 
     #popup-content {
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
       width: 90%;
       max-width: 400px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
       font-family: 'Poppins', sans-serif;
       color: #d63384;
-      position: relative;
     }
 
     #popup-content p {
       font-size: 18px;
       line-height: 1.6;
-      margin-bottom: 20px;
       color: #6c757d;
     }
 
@@ -135,30 +130,32 @@
       margin-top: 15px;
     }
 
-    /* Responsive for Mobile */
-    @media (max-width: 600px) {
-      .container, #popup-content {
-        max-width: 90%;
-        padding: 50px 25px;
-      }
-      .container h1 {
-        font-size: 32px;
-      }
-      .container p, #popup-content p {
+    @media (max-width: 500px) {
+      .container,
+      #popup-content {
+        padding: 50px 20px;
         font-size: 18px;
       }
+
+      .container h1,
+      #popup-content h2 {
+        font-size: 24px;
+      }
+
       input, button {
         font-size: 18px;
+        padding: 14px;
       }
-      #popup-content h2 {
-        font-size: 28px;
+
+      #popup-content p {
+        font-size: 17px;
       }
     }
-
   </style>
 </head>
 <body>
 
+<!-- Login Section -->
 <div class="container" id="login-container">
   <h1>Hi Madhusmita Dixit</h1>
   <p>Enter the secret credentials to unlock your surprise</p>
@@ -168,10 +165,10 @@
   <div class="error" id="error"></div>
 </div>
 
-<!-- Popup -->
+<!-- Welcome Popup -->
 <div id="popup">
   <div id="popup-content">
-    <h2 style="margin-bottom: 15px;">🎉 Welcome Madhu Mam 🎁</h2>
+    <h2>🎉 Welcome Madhu Mam 🎁</h2>
     <p>
       A little surprise is on the way just for you.<br><br>
       Wishing you a very <strong style="color:#d63384;">Happy Birthday</strong> in advance on <strong>5th May</strong> 🎂
@@ -182,11 +179,24 @@
 </div>
 
 <script>
+  // On page load: check if already logged in
+  window.onload = function () {
+    const isLoggedIn = sessionStorage.getItem("madhu_logged_in");
+    if (isLoggedIn === "true") {
+      document.getElementById("login-container").style.display = "none";
+      document.getElementById("popup").style.display = "flex";
+    } else {
+      document.getElementById("login-container").style.display = "flex";
+      document.getElementById("popup").style.display = "none";
+    }
+  };
+
   function validate() {
     const user = document.getElementById("username").value.trim();
     const pass = document.getElementById("password").value.trim();
 
     if (user === "Madhu" && pass === "Dixit") {
+      sessionStorage.setItem("madhu_logged_in", "true");
       document.getElementById("login-container").style.display = "none";
       document.getElementById("popup").style.display = "flex";
     } else {
@@ -195,6 +205,7 @@
   }
 
   function redirect() {
+    sessionStorage.removeItem("madhu_logged_in");
     window.location.href = "https://www.myntra.com/27959656?skuId=89974800&sellerPartnerId=22540&orderDate=1745608830000&orderId=5460629360&productName=Indo%20Era%20Women%20Floral%20Embroidered%20Thread%20Work%20Kurta%20with%20Trousers%20&%20With%20Dupatta&itemId=10431337826&orderStatusName=Confirmed&size=3XL";
   }
 </script>
