@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f8f9fa;
@@ -19,6 +20,7 @@
       align-items: center;
       overflow: hidden;
     }
+
     .container, #popup-content {
       background-color: #fff;
       display: flex;
@@ -32,18 +34,21 @@
       user-select: none;
       position: relative;
     }
+
     .container h1,
     #popup-content h2 {
       color: #d63384;
       margin-bottom: 10px;
       font-size: 28px;
     }
+
     .container p,
     #popup-content p {
       margin-bottom: 20px;
       font-size: 16px;
       color: #555;
     }
+
     input {
       width: 100%;
       padding: 12px;
@@ -52,6 +57,7 @@
       border: 1px solid #ccc;
       border-radius: 8px;
     }
+
     button {
       background-color: #d63384;
       color: white;
@@ -63,14 +69,17 @@
       margin-top: 10px;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #b02a6f;
     }
+
     .error {
       color: red;
       margin-top: 10px;
       font-size: 14px;
     }
+
     /* Popup */
     #popup {
       display: none;
@@ -86,6 +95,7 @@
       z-index: 1000;
       user-select: none;
     }
+
     #popup-content {
       width: 90%;
       max-width: 400px;
@@ -93,11 +103,13 @@
       font-family: 'Poppins', sans-serif;
       color: #d63384;
     }
+
     #popup-content p {
       font-size: 18px;
       line-height: 1.6;
       color: #6c757d;
     }
+
     #popup-content button {
       padding: 10px 20px;
       font-size: 16px;
@@ -106,45 +118,35 @@
       cursor: pointer;
       margin-top: 10px;
     }
+
     #continue-btn {
       background-color: #d63384;
       color: #fff;
     }
-    #order-btn, #address-btn {
+
+    #order-btn {
       background-color: #ffc107;
       color: #000;
       margin-top: 15px;
     }
-    #snapshot-modal {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-    }
-    #snapshot-modal img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    #back-btn {
-      background-color: #17a2b8;
-      color: #fff;
-      margin-top: 15px;
-    }
+
     @media (max-width: 500px) {
       .container,
       #popup-content {
         padding: 50px 20px;
         font-size: 18px;
       }
+
       .container h1,
       #popup-content h2 {
         font-size: 24px;
       }
+
       input, button {
         font-size: 18px;
         padding: 14px;
       }
+
       #popup-content p {
         font-size: 17px;
       }
@@ -168,23 +170,17 @@
   <div id="popup-content">
     <h2>🎉 Welcome Madhu Mam 🎁</h2>
     <p>
-      Hi Madhu Mam, Wishing you a very <strong style="color:#d63384;">Happy Birthday</strong> in advance on <strong>5th May</strong> 🎂.<br><br>
-      A small surprise is on the way just for you.<br><br>
-      The wait is almost over. Click ‘Continue’ to see your surprise 🎁
-    </p>
+  Hi Madhu Mam, Wishing you a very <strong style="color:#d63384;">Happy Birthday</strong> in advance on <strong>5th May</strong> 🎂.<br><br>
+  A small surprise is on the way just for you.<br><br>
+  The wait is almost over. Click ‘Continue’ to see your surprise 🎁
+</p>
     <button id="continue-btn" onclick="redirect()">Continue</button><br><br>
-    <button id="order-btn" onclick="showSnapshot('OrderDetails.png')">📦 View Order Snapshot</button>
-    <button id="address-btn" onclick="showSnapshot('DeliveryAddress.png')">📦 View Address Snapshot</button>
-
-    <div id="snapshot-modal">
-      <img id="snapshot-img" src="" alt="Snapshot">
-      <button id="back-btn" onclick="hideSnapshot()">⬅️ Back</button>
-    </div>
-
+    <button id="order-btn" onclick="window.open('OrderDetails.png', '_blank')">📦 View Order Snapshot</button>
   </div>
 </div>
 
 <script>
+  // On page load: check if already logged in
   window.onload = function () {
     const isLoggedIn = sessionStorage.getItem("madhu_logged_in");
     if (isLoggedIn === "true") {
@@ -212,21 +208,6 @@
   function redirect() {
     sessionStorage.removeItem("madhu_logged_in");
     window.location.href = "https://www.myntra.com/29834834?skuId=95966700&sellerPartnerId=26773&orderDate=1745652495000&orderId=5460888942&productName=WOMEN%20PLUS%20Women%20Ethnic%20Motifs%20Yoke%20Design%20Regular%20Thread%20Work%20Kurta%20with%20Trousers%20&%20With%20Dupatta&itemId=10431785556&orderStatusName=Cancelled&size=M";
-  }
-
-  function showSnapshot(imagePath) {
-    document.getElementById('snapshot-img').src = imagePath;
-    document.getElementById('snapshot-modal').style.display = 'flex';
-    document.getElementById('continue-btn').style.display = 'none';
-    document.getElementById('order-btn').style.display = 'none';
-    document.getElementById('address-btn').style.display = 'none';
-  }
-
-  function hideSnapshot() {
-    document.getElementById('snapshot-modal').style.display = 'none';
-    document.getElementById('continue-btn').style.display = 'inline-block';
-    document.getElementById('order-btn').style.display = 'inline-block';
-    document.getElementById('address-btn').style.display = 'inline-block';
   }
 </script>
 
