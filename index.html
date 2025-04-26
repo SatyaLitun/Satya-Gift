@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gift for Madhu</title>
+  <title>Madhu Mam, Your Special Surprise Awaits 🎁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
@@ -170,9 +170,10 @@
   <div id="popup-content">
     <h2>🎉 Welcome Madhu Mam 🎁</h2>
     <p>
-      A little surprise is on the way just for you.<br><br>
-      Wishing you a very <strong style="color:#d63384;">Happy Birthday</strong> in advance on <strong>5th May</strong> 🎂
-    </p>
+  Hi Madhu Mam, Wishing you a very <strong style="color:#d63384;">Happy Birthday</strong> in advance on <strong>5th May</strong> 🎂.<br><br>
+  A small surprise is on the way just for you.<br><br>
+  The wait is almost over. Click ‘Continue’ to see your surprise 🎁
+</p>
     <button id="continue-btn" onclick="redirect()">Continue</button><br><br>
     <button id="order-btn" onclick="window.open('OrderDetails.jpg', '_blank')">📦 View Order Snapshot</button>
   </div>
@@ -195,18 +196,18 @@
     const user = document.getElementById("username").value.trim();
     const pass = document.getElementById("password").value.trim();
 
-    if (user === "Madhu" && pass === "Dixit") {
+    if (user === "Madhusmita" && pass === "Dixit") {
       sessionStorage.setItem("madhu_logged_in", "true");
       document.getElementById("login-container").style.display = "none";
       document.getElementById("popup").style.display = "flex";
     } else {
-      document.getElementById("error").innerText = "Oops! Incorrect credentials. Try again.";
+      document.getElementById("error").innerText = "Madhu Mam, the credentials are incorrect. Please try again 🎁.";
     }
   }
 
   function redirect() {
     sessionStorage.removeItem("madhu_logged_in");
-    window.location.href = "https://www.myntra.com/27959656?skuId=89974800&sellerPartnerId=22540&orderDate=1745608830000&orderId=5460629360&productName=Indo%20Era%20Women%20Floral%20Embroidered%20Thread%20Work%20Kurta%20with%20Trousers%20&%20With%20Dupatta&itemId=10431337826&orderStatusName=Confirmed&size=3XL";
+    window.location.href = "https://www.myntra.com/29834834?skuId=95966700&sellerPartnerId=26773&orderDate=1745652495000&orderId=5460888942&productName=WOMEN%20PLUS%20Women%20Ethnic%20Motifs%20Yoke%20Design%20Regular%20Thread%20Work%20Kurta%20with%20Trousers%20&%20With%20Dupatta&itemId=10431785556&orderStatusName=Cancelled&size=M";
   }
 </script>
 
